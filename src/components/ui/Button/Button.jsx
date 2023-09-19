@@ -1,8 +1,7 @@
-import React from 'react'
-
-const Button = () => {
+import * as S from './style'
+const Button = ({text }) => {
 	return (
-		<button>Button</button>
+		<S.Button>{text ? text :<img src='/ico-search.svg' /> }</S.Button>
 	)
 }
 
