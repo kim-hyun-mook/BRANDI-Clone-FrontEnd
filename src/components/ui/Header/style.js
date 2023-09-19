@@ -9,22 +9,9 @@ export const Header = styled.header`
 export const H1 = styled.h1`
   font-size: 2em;
 `;
-export const HomeLink = styled(Link)`
-  display: block;
-  width: 182px;
-  height: 42px;
-  background-image: url('/brandi_logo.svg');
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-  background-size: 100% 100%;
-  overflow: hidden;
-  text-indent: -999px;
-  color: transparent;
-`;
 
 export const Inner = styled.div`
-font-size: 13px;
-
+  font-size: 13px;
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -38,10 +25,7 @@ font-size: 13px;
   padding: 30px 20px 24px;
 `;
 
-export const Ul = styled.ul`
-  display: flex;
-  margin-left: 60px;
-`;
+
 
 export const NavLink = styled(Link)`
   margin-left: 16px;

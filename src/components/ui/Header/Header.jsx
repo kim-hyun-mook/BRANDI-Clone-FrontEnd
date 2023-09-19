@@ -1,29 +1,24 @@
 import * as S from './style';
 import Form from '../../Form/Form';
+import Nav from '../Nav/Nav';
+import Alink from '../Link/Link';
+import Ul from '../Ul/Ul';
 
 const Header = () => {
   return (
     <S.Header>
       <S.Inner>
         <S.H1>
-          <S.HomeLink to="/">BRANDI</S.HomeLink>
+          <Alink toPath="/" text="BRANDI" linkStyle="logo" />
         </S.H1>
         <Form />
-        <nav>
-          <S.Ul>
-            <S.NavLink to="/cart">
-              <li>
-                <img src="/ic-cart.svg"  alt='장바구니'/>
-              </li>
-            </S.NavLink>
-            <S.NavLink to="/wish">
-              <img src="/ic-favorite.svg" alt='위시리스트' />
-            </S.NavLink>
-            <S.NavLink to="/me">
-              <img src="/ic-my.svg" alt='내정보'/>
-            </S.NavLink>
-          </S.Ul>
-        </nav>
+        <Nav>
+          <Ul>
+            <Alink toPath="/cart" text="장바구니" linkStyle="cart" />
+            <Alink toPath="/wish" text="위시리스트" linkStyle="hart" />
+            <Alink toPath="/me" text="내정보" linkStyle="my" />
+          </Ul>
+        </Nav>
       </S.Inner>
     </S.Header>
   );
