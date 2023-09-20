@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import DetailPicture from "../../components/DetailPicture";
 import DetailPurchase from "../../components/DetailPurchase";
-import { Reset } from "styled-reset";
+
 
 const ProductDetailPage = () => {
   return (
     <DeTailWrap>
-      <Reset />
       <div className="deTailPageContents">
         <div className="deTailPageFlex">
           <DetailPicture />
