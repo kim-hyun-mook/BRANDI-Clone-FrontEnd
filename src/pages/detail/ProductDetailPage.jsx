@@ -22,6 +22,7 @@ export default ProductDetailPage;
 const DeTailWrap = styled.div`
   width: 1200px;
   margin: 0 auto;
+  padding: 100px 0 0 0;
 
   .deTailPageFlex {
     display: flex;
