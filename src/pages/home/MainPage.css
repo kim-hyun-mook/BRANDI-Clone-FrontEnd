@@ -1,0 +1,50 @@
+.products-wrap {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    /* wrap 한 줄 개수 제한 */
+    max-width: 1200px;
+  }
+  .section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: -3px;
+    margin: 3rem 0;
+  }
+  .section-pagination{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .page-count{
+    margin-right: 1rem;
+  }
+  
+  .list-button-prev{
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.75 19.5L8.25 12l7.5-7.5' /%3E%3C/svg%3E%0A");
+    background-size: 1.5rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid #ebeef3;
+    background-color: white;
+    cursor: pointer;
+  }
+  .list-button-next{
+    width: 2.5rem;
+    height: 2.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' /%3E%3C/svg%3E%0A");
+    background-size: 1.5rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px solid #ebeef3;
+    background-color: white;
+    cursor: pointer;
+  }
