@@ -5,6 +5,8 @@ import MdCard from './../../components/ui/Card/MdCard';
 import './MainPage.css';
 import { useState } from 'react';
 import BenefitCard from '../../components/ui/Card/BenefitCard';
+import PaginationButton from './../../components/ui/Button/PaginationButton';
+import BenefitInfo from './../../components/ui/Card/BenefitInfo';
 
 const MainPage = () => {
   const byDayBig = '/bydaybig.png';
@@ -130,30 +132,30 @@ const MainPage = () => {
     },
   ];
 
-  const benefitProductsData = [
-    {
-      title: '[예뻐요] 이플 반목 셔링 반팔 티(4color)_니드어린',
-      company: '니드어린',
-      dc: '10%',
-      price: 24930,
-      img: '/p1.jpg',
-    },
-    {
-      title:
-        '~2XL,4Col[기장선택/인생롱와이드]속밴딩 자신만만 워싱 롱와이드 극찬핏 청바지 데님팬츠_복플레이스',
-      company: '복플레이스',
-      dc: '10%',
-      price: 28440,
-      img: '/p2.jpg',
-    },
-    {
-      title: '[예뻐요] 이플 반목 셔링 반팔 티(4color)_니드어린',
-      company: '니드어린',
-      dc: '10%',
-      price: 24930,
-      img: '/p1.jpg',
-    },
-  ];
+  // const benefitProductsData = [
+  //   {
+  //     title: '[예뻐요] 이플 반목 셔링 반팔 티(4color)_니드어린',
+  //     company: '니드어린',
+  //     dc: '10%',
+  //     price: 24930,
+  //     img: '/p1.jpg',
+  //   },
+  //   {
+  //     title:
+  //       '~2XL,4Col[기장선택/인생롱와이드]속밴딩 자신만만 워싱 롱와이드 극찬핏 청바지 데님팬츠_복플레이스',
+  //     company: '복플레이스',
+  //     dc: '10%',
+  //     price: 28440,
+  //     img: '/p2.jpg',
+  //   },
+  //   {
+  //     title: '[예뻐요] 이플 반목 셔링 반팔 티(4color)_니드어린',
+  //     company: '니드어린',
+  //     dc: '10%',
+  //     price: 24930,
+  //     img: '/p1.jpg',
+  //   },
+  // ];
 
   const sliceMdData = (data) => {
     if (data) {
@@ -191,17 +193,17 @@ const MainPage = () => {
       />
     );
   };
-  const renderBenefitCard = (product) => {
-    return (
-      <BenefitCard
-        title={product.title}
-        company={product.company}
-        dc={product.dc}
-        price={product.price}
-        img={product.img}
-      />
-    );
-  };
+  // const renderBenefitCard = (product) => {
+  //   return (
+  //     <BenefitCard
+  //       title={product.title}
+  //       company={product.company}
+  //       dc={product.dc}
+  //       price={product.price}
+  //       img={product.img}
+  //     />
+  //   );
+  // };
 
   const prevButtonHandler = () => {
     setPage((prev) => prev - 1);
@@ -224,25 +226,17 @@ const MainPage = () => {
 
   return (
     <>
-      <div>MainPage</div>
       <Banners />
       <div className="main-contents">
         <section className="section">
           <div className="section-title">
             <div className="section-title-text">오늘은 이 상품 어때요?</div>
-            <div className="section-pagination">
-              <div className="page-count">{page}/5</div>
-              <PrevButton
-                className="list-button-prev"
-                onClick={prevButtonHandler}
-                disabled={page === 1 ? true : false}
-              />
-              <NextButton
-                className="list-button-next"
-                onClick={nextButtonHandler}
-                disabled={page === 5 ? true : false}
-              />
-            </div>
+            <PaginationButton
+              page={page}
+              maxPage={5}
+              prevButtonHandler={prevButtonHandler}
+              nextButtonHandler={nextButtonHandler}
+            />
           </div>
           <div className="products-wrap">
             {sliceData(productsData).map(renderCard)}
@@ -303,19 +297,13 @@ const MainPage = () => {
         <section className="section">
           <div className="section-title">
             <div className="section-title-text">MD's PICK</div>
-            <div className="section-pagination">
-              <div className="page-count">{mdPage}/2</div>
-              <PrevButton
-                className="list-button-prev"
-                onClick={mdPrevButtonHandler}
-                disabled={mdPage === 1 ? true : false}
-              />
-              <NextButton
-                className="list-button-next"
-                onClick={mdNextButtonHandler}
-                disabled={mdPage === 2 ? true : false}
-              />
-            </div>
+
+            <PaginationButton
+              page={mdPage}
+              maxPage={2}
+              prevButtonHandler={mdPrevButtonHandler}
+              nextButtonHandler={mdNextButtonHandler}
+            />
           </div>
           <div className="md-contents">
             <div className="brandi-pick">
@@ -334,82 +322,30 @@ const MainPage = () => {
         <section className="section">
           <div className="section-title">
             <div className="section-title-text">지금 뜨고 있는 브랜디 혜택</div>
-            <div className="section-pagination">
-              <div className="page-count">{benefitPage}/3</div>
-              <PrevButton
-                className="list-button-prev"
-                onClick={benefitPrevButtonHandler}
-                disabled={benefitPage === 1 ? true : false}
-              />
-              <NextButton
-                className="list-button-next"
-                onClick={benefitNextButtonHandler}
-                disabled={benefitPage === 3 ? true : false}
-              />
-            </div>
+            <PaginationButton
+              page={benefitPage}
+              maxPage={3}
+              prevButtonHandler={benefitPrevButtonHandler}
+              nextButtonHandler={benefitNextButtonHandler}
+            />
           </div>
           <div className="benefits-wrap">
             {benefitPage === 1 && (
               <>
-                <div className="benefit">
-                  <div>
-                    <img src="/benefit1.png" alt="" />
-                  </div>
-                  <div className="benefit-products-wrap">
-                    {benefitProductsData.map(renderBenefitCard)}
-                  </div>
-                </div>
-
-                <div className="benefit">
-                  <div>
-                    <img src="/benefit2.png" alt="" />
-                  </div>
-                  <div className="benefit-products-wrap">
-                    {benefitProductsData.map(renderBenefitCard)}
-                  </div>
-                </div>
+                <BenefitInfo src={'/benefit1.png'} />
+                <BenefitInfo src={'/benefit2.png'} />
               </>
             )}
             {benefitPage === 2 && (
               <>
-                <div className="benefit">
-                  <div>
-                    <img src="/benefit3.png" alt="" />
-                  </div>
-                  <div className="benefit-products-wrap">
-                    {benefitProductsData.map(renderBenefitCard)}
-                  </div>
-                </div>
-
-                <div className="benefit">
-                  <div>
-                    <img src="/benefit4.png" alt="" />
-                  </div>
-                  <div className="benefit-products-wrap">
-                    {benefitProductsData.map(renderBenefitCard)}
-                  </div>
-                </div>
+                <BenefitInfo src={'/benefit3.png'} />
+                <BenefitInfo src={'/benefit4.png'} />
               </>
             )}
             {benefitPage === 3 && (
               <>
-                <div className="benefit">
-                  <div>
-                    <img src="/benefit5.png" alt="" />
-                  </div>
-                  <div className="benefit-products-wrap">
-                    {benefitProductsData.map(renderBenefitCard)}
-                  </div>
-                </div>
-
-                <div className="benefit">
-                  <div>
-                    <img src="/benefit6.png" alt="" />
-                  </div>
-                  <div className="benefit-products-wrap">
-                    {benefitProductsData.map(renderBenefitCard)}
-                  </div>
-                </div>
+                <BenefitInfo src={'/benefit5.png'} />
+                <BenefitInfo src={'/benefit6.png'} />
               </>
             )}
           </div>
@@ -424,36 +360,3 @@ const MainPage = () => {
 };
 
 export default MainPage;
-
-const PrevButton = styled.button`
-  width: 2.5rem;
-  height: 2.5rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.75 19.5L8.25 12l7.5-7.5' /%3E%3C/svg%3E%0A");
-  background-size: 1.5rem;
-  background-repeat: no-repeat;
-  background-position: center center;
-  border: 1px solid #ebeef3;
-  background-color: white;
-  cursor: pointer;
-
-  &:disabled {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none'  viewBox='0 0 24 24' stroke-width='1.5' stroke='gray' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.75 19.5L8.25 12l7.5-7.5' /%3E%3C/svg%3E%0A");
-    cursor: auto;
-  }
-`;
-const NextButton = styled.button`
-  width: 2.5rem;
-  height: 2.5rem;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' /%3E%3C/svg%3E%0A");
-  background-size: 1.5rem;
-  background-repeat: no-repeat;
-  background-position: center center;
-  border: 1px solid #ebeef3;
-  background-color: white;
-  cursor: pointer;
-
-  &:disabled {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='gray' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' /%3E%3C/svg%3E%0A");
-    cursor: auto;
-  }
-`;
