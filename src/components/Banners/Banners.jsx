@@ -146,11 +146,13 @@ function Banners() {
           ))}
         </Banner>
         <ShadeRight />
-        <SwiperPlayButton type="button" onClick={handleIsSwipe}>
-          {isSwipe && <PauseImg src={pause} alt="" />}
-          {!isSwipe && <PlayImg src={play} alt="" />}
-        </SwiperPlayButton>
-        <Pagination>{pagecnt} / 6</Pagination>
+        <BtnPage>
+          <SwiperPlayButton type="button" onClick={handleIsSwipe}>
+            {isSwipe && <PauseImg src={pause} alt="" />}
+            {!isSwipe && <PlayImg src={play} alt="" />}
+          </SwiperPlayButton>
+          <Pagination>{pagecnt} / 6</Pagination>
+        </BtnPage>
       </Container>
     </NonScroll>
   );
@@ -163,6 +165,7 @@ const NonScroll = styled.div`
 `;
 const Container = styled.div`
   width: 100vw;
+
   transition: transform 0.5s;
   display: flex;
   justify-content: center;
@@ -238,9 +241,6 @@ const BannerImg = styled.img`
   width: 100%;
 `;
 const SwiperPlayButton = styled.button`
-  position: absolute;
-  bottom: 1rem;
-  right: 16rem;
   width: 2.5rem;
   height: 2.5rem;
   display: flex;
@@ -268,13 +268,17 @@ const Pagination = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  bottom: 1rem;
-  right: 10rem;
   color: white;
   background-color: rgba(26, 29, 33, 0.9);
   width: 5rem;
   height: 2.5rem;
   border: 1px solid rgba(26, 29, 33, 0.9);
   border-radius: 100px;
+  margin-left: 1rem;
+`;
+const BtnPage = styled.div`
+  display: flex;
+  position: absolute;
+  bottom: 1rem;
+  right: 12vw;
 `;

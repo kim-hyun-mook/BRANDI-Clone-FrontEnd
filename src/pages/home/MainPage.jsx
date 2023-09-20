@@ -117,24 +117,26 @@ const MainPage = () => {
     <>
       <div>MainPage</div>
       <Banners />
-      <div className="section">
-        <h2 className="section-title">오늘은 이 상품 어때요?</h2>
-        <div className="section-pagination">
-          <div className="page-count">{page}/5</div>
-          <PrevButton
-            className="list-button-prev"
-            onClick={prevButtonHandler}
-            disabled={page === 1 ? true : false}
-          />
-          <NextButton
-            className="list-button-next"
-            onClick={nextButtonHandler}
-            disabled={page === 5 ? true : false}
-          />
+      <div className='main-contents'>
+        <div className="section">
+          <h2 className="section-title">오늘은 이 상품 어때요?</h2>
+          <div className="section-pagination">
+            <div className="page-count">{page}/5</div>
+            <PrevButton
+              className="list-button-prev"
+              onClick={prevButtonHandler}
+              disabled={page === 1 ? true : false}
+            />
+            <NextButton
+              className="list-button-next"
+              onClick={nextButtonHandler}
+              disabled={page === 5 ? true : false}
+            />
+          </div>
         </div>
-      </div>
-      <div className="products-wrap">
-        {sliceData(productsData).map(renderCard)}
+        <div className="products-wrap">
+          {sliceData(productsData).map(renderCard)}
+        </div>
       </div>
     </>
   );
