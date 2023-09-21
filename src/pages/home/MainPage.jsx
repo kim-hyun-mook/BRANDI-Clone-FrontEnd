@@ -1,26 +1,29 @@
 import Banners from './../../components/Banners/Banners';
-import { styled } from 'styled-components';
 import Card from './../../components/ui/Card/Card';
 import MdCard from './../../components/ui/Card/MdCard';
 import './MainPage.css';
 import { useState } from 'react';
-import BenefitCard from '../../components/ui/Card/BenefitCard';
+// import BenefitCard from '../../components/ui/Card/BenefitCard';
 import PaginationButton from './../../components/ui/Button/PaginationButton';
 import BenefitInfo from './../../components/ui/Card/BenefitInfo';
+import useGetTodayProductList from '../../hooks/useGetTodayProductList';
 
 const MainPage = () => {
   const byDayBig = '/bydaybig.png';
-
+  const { entities: todayProductData, error, loading } = useGetTodayProductList()
+  console.log(todayProductData)
   const [page, setPage] = useState(1);
   const limit = 8;
   const offset = (page - 1) * limit;
-
+  
   const [mdPage, setMdPage] = useState(1);
   const mdLimit = 3;
   const mdOffset = (mdPage - 1) * mdLimit;
-
+  
   const [benefitPage, setBenefitPage] = useState(1);
-
+  
+  if (loading) return <>로딩중입니다.</>
+  if(error) return <>상품 조회중 오류가 발생했습니다.</>
   const productsData = [
     {
       title: '[예뻐요] 이플 반목 셔링 반팔 티(4color)_니드어린',
@@ -131,6 +134,8 @@ const MainPage = () => {
       img: '/p2.jpg',
     },
   ];
+
+
 
   // const benefitProductsData = [
   //   {
