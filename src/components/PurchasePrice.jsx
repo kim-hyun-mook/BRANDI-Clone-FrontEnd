@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import Images from "@components/Images";
-import HomeIco from "../images/homeIco.png";
-import RightArrow from "../images/rightArrorw.png";
-import icnPdpbPay from "../images/icn-pdp-bpay.png";
-import iconStar from "../images/icon-star.png";
-import PurchaseDelivery from "./PurchaseDelivery";
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Images from '@components/Images';
+import HomeIco from '../images/homeIco.png';
+import RightArrow from '../images/rightArrorw.png';
+import icnPdpbPay from '../images/icn-pdp-bpay.png';
+import iconStar from '../images/icon-star.png';
+import PurchaseDelivery from './PurchaseDelivery';
 
 const PurchasePrice = () => {
   //토글
@@ -14,12 +14,12 @@ const PurchasePrice = () => {
   const handleButtonClick = () => {
     //쿠폰받기confirm
     const result = window.confirm(
-      "로그인이 필요한 서비스입니다.\n로그인 페이지로 이동하시겠습니까?"
+      '로그인이 필요한 서비스입니다.\n로그인 페이지로 이동하시겠습니까?'
     );
     if (result) {
-      alert("로그인 페이지로 이동합니다.");
+      alert('로그인 페이지로 이동합니다.');
     } else {
-      alert("취소를 눌렀습니다.");
+      alert('취소를 눌렀습니다.');
     }
   };
 
@@ -56,7 +56,7 @@ const PurchasePrice = () => {
                 21,190<i>원</i>
               </span>
               <a
-                className={isOpen ? "Toggle active" : "Toggle"}
+                className={isOpen ? 'Toggle active' : 'Toggle'}
                 onClick={toggleDropdown}
               ></a>
             </p>
@@ -120,7 +120,7 @@ const PurchasePriceWrap = styled.div`
     font-size: 18px;
   }
   a.pageLink:before {
-    content: "";
+    content: '';
     width: 20px;
     height: 20px;
     background-image: url(${HomeIco});
@@ -130,7 +130,7 @@ const PurchasePriceWrap = styled.div`
     background-size: 20px;
   }
   a.pageLink:after {
-    content: "";
+    content: '';
     width: 15px;
     height: 18px;
     background-image: url(${RightArrow});
@@ -310,7 +310,7 @@ const PurchasePriceWrap = styled.div`
     position: relative;
   }
   span.seeReview:after {
-    content: "";
+    content: '';
     width: 1px;
     height: 16px;
     background: #333;
