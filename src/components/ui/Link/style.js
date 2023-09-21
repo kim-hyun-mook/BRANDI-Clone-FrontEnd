@@ -27,6 +27,9 @@ const ALinkStyles = {
     text-indent: -999px;
     color: transparent;
     margin-left: 16px;
+    @media all and (max-width: 680px) {
+      margin-left: 0px;
+    }
   `,
 
   hart: css`
