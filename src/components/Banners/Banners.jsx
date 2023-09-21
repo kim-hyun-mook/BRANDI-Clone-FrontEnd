@@ -132,8 +132,6 @@ function Banners() {
   //pagination 표시 로직
   let pagecnt = swiperCurrentPosition - 1;
   if (swiperCurrentPosition - 1 === 7) pagecnt = 1;
-
-  console.log(swiperCurrentPosition);
   return (
     <NonScroll>
       <Container>
@@ -165,7 +163,6 @@ const NonScroll = styled.div`
 `;
 const Container = styled.div`
   width: 100vw;
-
   transition: transform 0.5s;
   display: flex;
   justify-content: center;
