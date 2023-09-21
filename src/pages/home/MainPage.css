@@ -102,7 +102,7 @@
   width: 100%;
   margin-left: 8rem;
 }
-.list-button {
+/* .list-button {
   border: 1px solid#c1c7ce;
   border-radius: 50px;
   padding: 0.8rem 1.7rem;
@@ -111,7 +111,7 @@
   font-weight: bold;
   background-color: white;
   margin-right: 1rem;
-}
+} */
 
 .md-contents {
   display: flex;
