@@ -21,6 +21,9 @@ const MainPage = () => {
 
   const [benefitPage, setBenefitPage] = useState(1);
 
+  const [bestIndex, setBestIndex] = useState(0);
+  const [newIndex, setNewIndex] = useState(0);
+
   const productsData = [
     {
       title: '[예뻐요] 이플 반목 셔링 반팔 티(4color)_니드어린',
@@ -224,6 +227,13 @@ const MainPage = () => {
     setBenefitPage((prev) => prev + 1);
   };
 
+  const changeBestButton = (event) => {
+    setBestIndex(Number(event.target.id));
+  };
+  const changeNewButton = (event) => {
+    setNewIndex(Number(event.target.id));
+  };
+
   return (
     <>
       <Banners />
@@ -266,11 +276,41 @@ const MainPage = () => {
             <div className="section-title-text">TODAY 카테고리 베스트</div>
           </div>
           <div className="list-button-best">
-            <button className="list-button">전체</button>
-            <button className="list-button">트랜드</button>
-            <button className="list-button">브랜드</button>
-            <button className="list-button">뷰티</button>
-            <button className="list-button">라이프</button>
+            <ListSelectButton
+              id="0"
+              onClick={changeBestButton}
+              value={bestIndex}
+            >
+              전체
+            </ListSelectButton>
+            <ListSelectButton
+              id="1"
+              onClick={changeBestButton}
+              value={bestIndex}
+            >
+              트랜드
+            </ListSelectButton>
+            <ListSelectButton
+              id="2"
+              onClick={changeBestButton}
+              value={bestIndex}
+            >
+              브랜드
+            </ListSelectButton>
+            <ListSelectButton
+              id="3"
+              onClick={changeBestButton}
+              value={bestIndex}
+            >
+              뷰티
+            </ListSelectButton>
+            <ListSelectButton
+              id="4"
+              onClick={changeBestButton}
+              value={bestIndex}
+            >
+              라이프
+            </ListSelectButton>
           </div>
           <div className="products-wrap">{productsData.map(renderCard)}</div>
           <button className="see-more">
@@ -283,10 +323,18 @@ const MainPage = () => {
             <div className="section-title-text">신상 모아보기</div>
           </div>
           <div className="list-button-best">
-            <button className="list-button">전체</button>
-            <button className="list-button">브랜드</button>
-            <button className="list-button">뷰티</button>
-            <button className="list-button">라이프</button>
+            <ListSelectButton id="0" onClick={changeNewButton} value={newIndex}>
+              전체
+            </ListSelectButton>
+            <ListSelectButton id="1" onClick={changeNewButton} value={newIndex}>
+              브랜드
+            </ListSelectButton>
+            <ListSelectButton id="2" onClick={changeNewButton} value={newIndex}>
+              뷰티
+            </ListSelectButton>
+            <ListSelectButton id="3" onClick={changeNewButton} value={newIndex}>
+              라이프
+            </ListSelectButton>
           </div>
           <div className="products-wrap">{productsData.map(renderCard)}</div>
           <button className="see-more">
@@ -360,3 +408,19 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
+const ListSelectButton = styled.button`
+  border: 1px solid #c1c7ce;
+  border-radius: 50px;
+  padding: 0.8rem 1.7rem;
+  color: #8b939d;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 1rem;
+
+  ${(props) =>
+    props.value === Number(props.id) &&
+    ` background-color: #ff365d;
+      color: white;
+      border: 1px solid #ff365d;`}
+`;
