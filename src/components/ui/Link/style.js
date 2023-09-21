@@ -6,7 +6,7 @@ const ALinkStyles = {
     display: block;
     width: 182px;
     height: 42px;
-    background-image: url('/brandi-logo-xl.svg');
+    background-image: url('/brandi_logo.svg');
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 100% 100%;
@@ -60,6 +60,7 @@ const ALinkStyles = {
     color: transparent;
     margin-left: 16px;
   `,
+
 };
 
 export const Alink = styled(Link)`
@@ -75,4 +76,11 @@ export const Alink = styled(Link)`
         return ALinkStyles.my;
     }
   }}
+  text-decoration: none;
+	font-weight: 600;
+	font-size: 17px;
+  &:visited {
+    color: #202429;
+
+  }
 `;
