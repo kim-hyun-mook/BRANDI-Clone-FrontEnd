@@ -1,13 +1,14 @@
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import styled from "styled-components";
-import Images from "@components/Images";
-import Bigimg from "../images/Bigimg01.jpeg";
-import Bigimg02 from "../images/Bigimg02.jpeg";
-import Bigimg03 from "../images/Bigimg03.jpeg";
-import Bigimg04 from "../images/Bigimg04.jpeg";
+
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import styled from 'styled-components';
+import Images from '@components/Images';
+import Bigimg from '../images/Bigimg01.jpeg';
+import Bigimg02 from '../images/Bigimg02.jpeg';
+import Bigimg03 from '../images/Bigimg03.jpeg';
+import Bigimg04 from '../images/Bigimg04.jpeg';
+
 
 const DetailPicture = () => {
   const sliderSettings = {
@@ -51,10 +52,15 @@ const PictureContents = styled.div`
   img {
     width: 100%;
   }
+  @media all and (max-width: 768px) {
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
 
   .slick-slider .slick-track,
   .slick-slider .slick-list {
-    height: 500px;
+    height: auto;
   }
 
   .slick-slide img {

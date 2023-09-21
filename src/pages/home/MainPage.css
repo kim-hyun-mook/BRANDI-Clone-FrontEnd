@@ -1,0 +1,164 @@
+.main-contents {
+  margin: auto;
+  max-width: 1200px;
+  margin-bottom: 10rem;
+}
+.products-wrap {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  /* wrap 한 줄 개수 제한 */
+  /* max-width: 1200px; */
+  margin: auto;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section-title {
+  display: flex;
+  width: 100%;
+  max-width: 1070px;
+  justify-content: space-between;
+}
+.section2-title {
+  display: flex;
+  align-items: center;
+}
+.section2-title img {
+  height: 2.5rem;
+  margin-right: 0.7rem;
+}
+.section-title-text {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: -3px;
+  margin: 3rem 0;
+}
+.section-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.page-count {
+  margin-right: 1rem;
+}
+
+.list-button-prev {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M15.75 19.5L8.25 12l7.5-7.5' /%3E%3C/svg%3E%0A");
+  background-size: 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 1px solid #ebeef3;
+  background-color: white;
+  cursor: pointer;
+}
+.list-button-next {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor' class='w-6 h-6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' /%3E%3C/svg%3E%0A");
+  background-size: 1.5rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 1px solid #ebeef3;
+  background-color: white;
+  cursor: pointer;
+}
+
+.see-more {
+  padding: 1rem 5rem;
+  border: 1px solid #d7dae2;
+  border-radius: 50px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+.see-more img {
+  margin-top: 4px;
+  width: 1rem;
+  height: 1rem;
+}
+.see-more p {
+  font-weight: bold;
+}
+.main-contents-banner {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 4rem;
+  max-width: 1072px;
+  flex-wrap: wrap;
+  margin-top: 7rem;
+  margin-bottom: 4rem;
+}
+.main-contents-banner img {
+  width: 530px;
+}
+.list-button-best {
+  margin-bottom: 1rem;
+  width: 100%;
+  margin-left: 8rem;
+}
+.list-button {
+  border: 1px solid#c1c7ce;
+  border-radius: 50px;
+  padding: 0.8rem 1.7rem;
+  color: #8b939d;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: white;
+  margin-right: 1rem;
+}
+
+.md-contents {
+  display: flex;
+}
+.brandi-pick {
+  color: white;
+  background-color: #202429;
+  width: 13rem;
+  height: 15.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.upper {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.lower {
+  font-size: 0.8rem;
+}
+.md-products-wrap {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  /* wrap 한 줄 개수 제한 */
+  /* max-width: 1200px; */
+  margin-left: 2rem;
+}
+
+.benefits {
+  display: flex;
+}
+.benefit-products-wrap {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 0.7rem;
+  margin-bottom: 7rem;
+}
+.benefits-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  width: 1088px;
+  justify-content: space-between;
+}
+.benefit img {
+  width: 540px;
+}
