@@ -27,6 +27,9 @@ const ALinkStyles = {
     text-indent: -999px;
     color: transparent;
     margin-left: 16px;
+    @media all and (max-width: 680px) {
+      margin-left: 0px;
+    }
   `,
 
   hart: css`
@@ -65,9 +68,9 @@ export const Alink = styled(Link)`
       case 'logo':
         return ALinkStyles.logo;
       case 'cart':
-				return ALinkStyles.cart;
-			case 'hart':
-				return ALinkStyles.hart;
+        return ALinkStyles.cart;
+      case 'hart':
+        return ALinkStyles.hart;
       case 'my':
         return ALinkStyles.my;
     }
