@@ -4,11 +4,12 @@ import BottomNav from "../components/BottomNav/BottomNav"
 
 
 const Layout = () => {
+	
 	return (
 		<div>
 			<Header />
 			<BottomNav/>
-			<Outlet/>
+			<Outlet />
 		</div>
 	)
 }
