@@ -1,10 +1,25 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-const Card = ({ title, company, dc, price, img }) => {
+const Card = ({
+  title,
+  company,
+  dc,
+  price,
+  img,
+  key,
+  productData,
+  productId,
+}) => {
+  console.log(key);
+
   const byDay = '/byday.png';
   return (
-    <CardUI>
+    <CardUI
+      key={key}
+      to={`/product/${productId}`}
+      state={{ data: productData }}
+    >
       <ImgDiv>
         <ProductImg src={img} alt="" />
       </ImgDiv>
@@ -14,8 +29,13 @@ const Card = ({ title, company, dc, price, img }) => {
       </InfoCompany>
       <ProductTitle>{title}</ProductTitle>
       <InfoPrice>
-        <DC>{dc}</DC>
-        <SellingPrice>{price}원</SellingPrice>
+        {dc ? <DC>{dc}%</DC> : ''}
+        <SellingPrice>
+          {dc !== 0
+            ? (price * ((100 - dc) / 100)).toLocaleString('ko-KR')
+            : price.toLocaleString('ko-KR')}
+          원
+        </SellingPrice>
       </InfoPrice>
     </CardUI>
   );
@@ -23,10 +43,17 @@ const Card = ({ title, company, dc, price, img }) => {
 
 export default Card;
 
-const CardUI = styled.div`
+const CardUI = styled(Link)`
   width: 16rem;
   height: 23rem;
   margin-bottom: 2rem;
+  text-decoration: none;
+  &:link {
+    color: black;
+  }
+  &:visited {
+    color: black;
+  }
   cursor: pointer;
 `;
 

@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import PurchasePrice from './PurchasePrice';
 
-const DetailPurchase = () => {
+const DetailPurchase = ({productData }) => {
   return (
     <PurchaseContents>
-      <PurchasePrice />
+      <PurchasePrice productData={productData} />
     </PurchaseContents>
   );
 };
