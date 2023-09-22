@@ -2,7 +2,8 @@ import Banners from './../../components/Banners/Banners';
 import Card from './../../components/ui/Card/Card';
 import MdCard from './../../components/ui/Card/MdCard';
 import './MainPage.css';
-import { useState } from 'react';
+import styled from 'styled-components'
+import {  useState } from 'react';
 // import BenefitCard from '../../components/ui/Card/BenefitCard';
 import PaginationButton from './../../components/ui/Button/PaginationButton';
 import BenefitInfo from './../../components/ui/Card/BenefitInfo';
@@ -10,8 +11,8 @@ import useGetTodayProductList from '../../hooks/useGetTodayProductList';
 
 const MainPage = () => {
   const byDayBig = '/bydaybig.png';
-  const { entities: todayProductData, error, loading } = useGetTodayProductList()
-  console.log(todayProductData)
+  const { entities: todayProductData, error, loading} = useGetTodayProductList()
+
   const [page, setPage] = useState(1);
   const limit = 8;
   const offset = (page - 1) * limit;
@@ -183,13 +184,15 @@ const MainPage = () => {
   };
 
   const renderCard = (product) => {
+   
     return (
-      <Card
-        title={product.title}
-        company={product.company}
-        dc={product.dc}
+      <Card key={product.produtId}
+        productData={product }
+        title={product.productName}
+        company={product.shopName}
+        dc={product.discount}
         price={product.price}
-        img={product.img}
+        img={product?.productInfoImages&&product.productInfoImages[0]  }
       />
     );
   };
@@ -257,7 +260,7 @@ const MainPage = () => {
             />
           </div>
           <div className="products-wrap">
-            {sliceData(productsData).map(renderCard)}
+            {sliceData(todayProductData&&todayProductData).map(renderCard)}
           </div>
         </section>
 
