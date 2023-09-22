@@ -8,10 +8,12 @@ import {  useState } from 'react';
 import PaginationButton from './../../components/ui/Button/PaginationButton';
 import BenefitInfo from './../../components/ui/Card/BenefitInfo';
 import useGetTodayProductList from '../../hooks/useGetTodayProductList';
+import useGetTomorrowProductList from '../../hooks/useGetTomorrowProductList';
 
 const MainPage = () => {
   const byDayBig = '/bydaybig.png';
   const { entities: todayProductData, error, loading} = useGetTodayProductList()
+  const { entities: tomorrowProductData, isError, isLoading} = useGetTomorrowProductList()
 
   const [page, setPage] = useState(1);
   const limit = 8;
@@ -144,30 +146,7 @@ const MainPage = () => {
 
 
 
-  // const benefitProductsData = [
-  //   {
-  //     title: '[예뻐요] 이플 반목 셔링 반팔 티(4color)_니드어린',
-  //     company: '니드어린',
-  //     dc: '10%',
-  //     price: 24930,
-  //     img: '/p1.jpg',
-  //   },
-  //   {
-  //     title:
-  //       '~2XL,4Col[기장선택/인생롱와이드]속밴딩 자신만만 워싱 롱와이드 극찬핏 청바지 데님팬츠_복플레이스',
-  //     company: '복플레이스',
-  //     dc: '10%',
-  //     price: 28440,
-  //     img: '/p2.jpg',
-  //   },
-  //   {
-  //     title: '[예뻐요] 이플 반목 셔링 반팔 티(4color)_니드어린',
-  //     company: '니드어린',
-  //     dc: '10%',
-  //     price: 24930,
-  //     img: '/p1.jpg',
-  //   },
-  // ];
+
 
   const sliceMdData = (data) => {
     if (data) {
@@ -184,26 +163,28 @@ const MainPage = () => {
   };
 
   const renderCard = (product) => {
-   
+
     return (
-      <Card key={product.produtId}
-        productData={product }
+      <Card
+        key={product.productId}
+        productId={product.productId}
+        productData={product}
         title={product.productName}
         company={product.shopName}
         dc={product.discount}
         price={product.price}
-        img={product?.productInfoImages&&product.productInfoImages[0]  }
+        img={product?.productInfoImages && product.productInfoImages[0]}
       />
     );
   };
   const renderMdCard = (product) => {
     return (
       <MdCard
-        title={product.title}
-        company={product.company}
-        dc={product.dc}
+        title={product.productName}
+        company={product.shopName}
+        dc={product.discount}
         price={product.price}
-        img={product.img}
+        img={product?.productInfoImages && product.productInfoImages[0]}
       />
     );
   };
@@ -271,18 +252,18 @@ const MainPage = () => {
               <div className="section-title-text">상품은 내일 도착!</div>
             </div>
           </div>
-          <div className="products-wrap">{productsData.map(renderCard)}</div>
+          <div className="products-wrap">{tomorrowProductData&&todayProductData.slice(16, 24).reverse().map(renderCard)}</div>
           <button className="see-more">
             <p>하루배송 상품</p>더보기 <img src="/right.svg" alt="" />
           </button>
         </section>
 
         <section className="main-contents-banner">
-          <div class="img">
+          <div className="img">
             <img src="/b7.jpg" alt="" />
           </div>
 
-          <div class="img">
+          <div className="img">
             <img src="/b8.jpg" alt="" />
           </div>
         </section>
@@ -328,7 +309,7 @@ const MainPage = () => {
               라이프
             </ListSelectButton>
           </div>
-          <div className="products-wrap">{productsData.map(renderCard)}</div>
+          <div className="products-wrap">{tomorrowProductData.slice(8, 16).map(renderCard)}</div>
           <button className="see-more">
             <p>베스트</p>더보기 <img src="/right.svg" alt="" />
           </button>
@@ -352,7 +333,7 @@ const MainPage = () => {
               라이프
             </ListSelectButton>
           </div>
-          <div className="products-wrap">{productsData.map(renderCard)}</div>
+          <div className="products-wrap">{todayProductData.slice(16, 24).map(renderCard)}</div>
           <button className="see-more">
             <p>트렌드 신상</p>더보기 <img src="/right.svg" alt="" />
           </button>
@@ -378,7 +359,7 @@ const MainPage = () => {
               <p className="lower">이 상품 어때요?</p>
             </div>
             <div className="md-products-wrap">
-              {sliceMdData(mdProductsData).map(renderMdCard)}
+              {sliceMdData(tomorrowProductData).map(renderMdCard)}
             </div>
           </div>
         </section>

@@ -1,13 +1,25 @@
-
 import { Link } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-const Card = ({ title, company, dc, price, img, key, productData }) => {
-console.log(key)
+const Card = ({
+  title,
+  company,
+  dc,
+  price,
+  img,
+  key,
+  productData,
+  productId,
+}) => {
+  console.log(key);
 
   const byDay = '/byday.png';
   return (
-    <CardUI key={key} to={`/product/${key}`} state={{ data: productData  }}>
+    <CardUI
+      key={key}
+      to={`/product/${productId}`}
+      state={{ data: productData }}
+    >
       <ImgDiv>
         <ProductImg src={img} alt="" />
       </ImgDiv>
@@ -17,8 +29,13 @@ console.log(key)
       </InfoCompany>
       <ProductTitle>{title}</ProductTitle>
       <InfoPrice>
-        <DC>{dc}%</DC>
-        <SellingPrice>{price}원</SellingPrice>
+        {dc ? <DC>{dc}%</DC> : ''}
+        <SellingPrice>
+          {dc !== 0
+            ? (price * ((100 - dc) / 100)).toLocaleString('ko-KR')
+            : price.toLocaleString('ko-KR')}
+          원
+        </SellingPrice>
       </InfoPrice>
     </CardUI>
   );

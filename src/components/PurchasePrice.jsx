@@ -7,7 +7,7 @@ import icnPdpbPay from '../images/icn-pdp-bpay.png';
 import iconStar from '../images/icon-star.png';
 import PurchaseDelivery from './PurchaseDelivery';
 
-const PurchasePrice = () => {
+const PurchasePrice = ({ productData }) => {
   //토글
   const [isOpen, setIsOpen] = useState(false);
 
@@ -31,16 +31,26 @@ const PurchasePrice = () => {
   return (
     <>
       <PurchasePriceWrap>
-        <a className="pageLink">니드어린</a>
-        <span className="pageTitle">
-          [예뻐요] 이플 반목 셔링 반팔 티(4color)_니드어린
-        </span>
+        <a className="pageLink">{productData.shopName}</a>
+        <span className="pageTitle">{productData.productName}</span>
         <div className="disCount-priCe">
           <p>
-            <span className="disCountPercent">10%</span>
-            <span className="disCountPrices">24,930원</span>
+            <span className="disCountPercent">
+              {productData.discount !== 0 && productData.discount}
+              {productData.discount !== 0 && '%'}
+            </span>
+            <span className="disCountPrices">
+              {productData.discount !== 0
+                ? (
+                    productData.price *
+                    ((100 - productData.discount) / 100)
+                  ).toLocaleString('ko-KR')
+                : productData.price.toLocaleString('ko-KR')}
+              원
+            </span>
             <span className="priceBeforeDiscount">
-              27,700<i>원</i>
+              {productData.price.toLocaleString('ko-KR')}
+              <i>원</i>
             </span>
           </p>
           <button className="coupon" onClick={handleButtonClick}>
