@@ -1,4 +1,3 @@
-
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -9,7 +8,6 @@ import Bigimg02 from '../images/Bigimg02.jpeg';
 import Bigimg03 from '../images/Bigimg03.jpeg';
 import Bigimg04 from '../images/Bigimg04.jpeg';
 
-
 const DetailPicture = () => {
   const sliderSettings = {
     dots: true, // 점(도트) 표시 여부
@@ -18,6 +16,8 @@ const DetailPicture = () => {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
   };
 
   return (
