@@ -249,7 +249,7 @@ const MainPage = () => {
     <>
       <Banners />
       <div className="main-contents">
-        <section className="section">
+        <section className="section" data-aos="fade-up">
           <div className="section-title">
             <div className="section-title-text">오늘은 이 상품 어때요?</div>
             <PaginationButton
@@ -278,8 +278,13 @@ const MainPage = () => {
         </section>
 
         <section className="main-contents-banner">
-          <img src="/b7.jpg" alt="" />
-          <img src="/b8.jpg" alt="" />
+          <div class="img">
+            <img src="/b7.jpg" alt="" />
+          </div>
+
+          <div class="img">
+            <img src="/b8.jpg" alt="" />
+          </div>
         </section>
 
         <section className="section">

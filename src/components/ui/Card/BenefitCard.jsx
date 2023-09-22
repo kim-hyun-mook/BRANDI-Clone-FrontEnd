@@ -26,6 +26,15 @@ const CardUI = styled.div`
   height: 12rem;
   margin-bottom: 2rem;
   cursor: pointer;
+
+  @media all and (max-width: 1200px) {
+    width: 48%;
+    height: auto;
+  }
+
+  @media all and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const ImgDiv = styled.div`
@@ -35,6 +44,10 @@ const ImgDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media all and (max-width: 1200px) {
+    width: 100%;
+    height: auto;
+  }
 `;
 const ProductImg = styled.img`
   height: 100%;
