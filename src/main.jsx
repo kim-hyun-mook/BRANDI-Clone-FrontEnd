@@ -4,15 +4,15 @@ import { RouterProvider } from 'react-router-dom';
 import theme from '@styles/theme';
 import GlobalStyle from '@styles/globalStyle';
 import { ThemeProvider } from 'styled-components';
-import 'aos/dist/aos.css';
-import AOS from 'aos';
+import { Provider } from 'react-redux';
+import { store } from './stores/store';
 
-// AOS 초기화
-AOS.init();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <RouterProvider router={Routers} />
+    <Provider store={store}>
+      <RouterProvider router={Routers} />
+    </Provider>
   </ThemeProvider>
 );

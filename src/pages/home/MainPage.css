@@ -119,7 +119,7 @@ body {
   width: 90%;
   margin-bottom: 1rem;
 }
-.list-button {
+/* .list-button {
   border: 1px solid#c1c7ce;
   border-radius: 50px;
   padding: 0.8rem 1.7rem;
@@ -128,7 +128,7 @@ body {
   font-weight: bold;
   background-color: white;
   margin-right: 1rem;
-}
+} */
 
 .md-contents {
   display: flex;
