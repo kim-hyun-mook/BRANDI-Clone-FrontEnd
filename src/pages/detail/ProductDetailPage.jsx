@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 import DetailPicture from '../../components/DetailPicture';
 import DetailPurchase from '../../components/DetailPurchase';
+import { useLocation } from 'react-router-dom';
 
 const ProductDetailPage = () => {
+  const { data: productData } = useLocation().state;
   return (
     <DeTailWrap>
       <div className="deTailPageContents">
         <div className="deTailPageFlex">
-          <DetailPicture />
-          <DetailPurchase />
+          <DetailPicture productImg={productData?.productInfoImages } />
+          <DetailPurchase productData={ productData} />
         </div>
       </div>
     </DeTailWrap>

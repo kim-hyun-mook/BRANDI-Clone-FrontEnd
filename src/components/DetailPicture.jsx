@@ -8,7 +8,7 @@ import Bigimg02 from '../images/Bigimg02.jpeg';
 import Bigimg03 from '../images/Bigimg03.jpeg';
 import Bigimg04 from '../images/Bigimg04.jpeg';
 
-const DetailPicture = () => {
+const DetailPicture = ({productImg }) => {
   const sliderSettings = {
     dots: true, // 점(도트) 표시 여부
     arrows: false,
@@ -21,23 +21,23 @@ const DetailPicture = () => {
   };
 
   return (
-    <PictureContents>
+    <PictureContents defaultImg={productImg} >
       <div>
         <Slider {...sliderSettings}>
           <div>
-            <Images imgSrc={Bigimg} />
+            <Images imgSrc={productImg[0]} />
           </div>
 
           <div>
-            <Images imgSrc={Bigimg02} />
+            <Images imgSrc={productImg[1]} />
           </div>
 
           <div>
-            <Images imgSrc={Bigimg03} />
+            <Images imgSrc={productImg[2]} />
           </div>
 
           <div>
-            <Images imgSrc={Bigimg04} />
+            <Images imgSrc={productImg[3]} />
           </div>
         </Slider>
       </div>
@@ -91,24 +91,23 @@ const PictureContents = styled.div`
     width: 100px;
     height: 100px;
     background-size: 100px !important;
-    background: url(${Bigimg});
+    background: url(${(props) => props.defaultImg});
     font-size: 0px;
     opacity: 0.35;
   }
+  ${(props) =>
+    props.defaultImg &&
+    props.defaultImg
+      .map(
+        (img, index) => `
+    .slick-dots li:nth-child(${index + 1}) button:before {
+      background: url(${img});
+    }
+  `
+      )
+      .join('')}
 
   .slick-dots li.slick-active button:before {
     opacity: 0.95;
-  }
-
-  .slick-dots li:nth-child(2) button:before {
-    background: url(${Bigimg02});
-  }
-
-  .slick-dots li:nth-child(3) button:before {
-    background: url(${Bigimg03});
-  }
-
-  .slick-dots li:nth-child(4) button:before {
-    background: url(${Bigimg04});
   }
 `;
