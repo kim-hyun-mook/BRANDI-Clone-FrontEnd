@@ -1,25 +1,34 @@
 import Banners from './../../components/Banners/Banners';
-import { styled } from 'styled-components';
 import Card from './../../components/ui/Card/Card';
 import MdCard from './../../components/ui/Card/MdCard';
 import './MainPage.css';
 import { useState } from 'react';
-import BenefitCard from '../../components/ui/Card/BenefitCard';
+// import BenefitCard from '../../components/ui/Card/BenefitCard';
 import PaginationButton from './../../components/ui/Button/PaginationButton';
 import BenefitInfo from './../../components/ui/Card/BenefitInfo';
+import useGetTodayProductList from '../../hooks/useGetTodayProductList';
 
 const MainPage = () => {
   const byDayBig = '/bydaybig.png';
-
+  const { entities: todayProductData, error, loading } = useGetTodayProductList()
+  console.log(todayProductData)
   const [page, setPage] = useState(1);
   const limit = 8;
   const offset = (page - 1) * limit;
-
+  
   const [mdPage, setMdPage] = useState(1);
   const mdLimit = 3;
   const mdOffset = (mdPage - 1) * mdLimit;
-
+  
   const [benefitPage, setBenefitPage] = useState(1);
+
+  const [bestIndex, setBestIndex] = useState(0);
+  const [newIndex, setNewIndex] = useState(0);
+  
+  if (loading) return <>로딩중입니다.</>
+  if(error) return <>상품 조회중 오류가 발생했습니다.</>
+
+
 
   const productsData = [
     {
@@ -132,6 +141,8 @@ const MainPage = () => {
     },
   ];
 
+
+
   // const benefitProductsData = [
   //   {
   //     title: '[예뻐요] 이플 반목 셔링 반팔 티(4color)_니드어린',
@@ -224,11 +235,18 @@ const MainPage = () => {
     setBenefitPage((prev) => prev + 1);
   };
 
+  const changeBestButton = (event) => {
+    setBestIndex(Number(event.target.id));
+  };
+  const changeNewButton = (event) => {
+    setNewIndex(Number(event.target.id));
+  };
+
   return (
     <>
       <Banners />
       <div className="main-contents">
-        <section className="section">
+        <section className="section" data-aos="fade-up">
           <div className="section-title">
             <div className="section-title-text">오늘은 이 상품 어때요?</div>
             <PaginationButton
@@ -257,8 +275,13 @@ const MainPage = () => {
         </section>
 
         <section className="main-contents-banner">
-          <img src="/b7.jpg" alt="" />
-          <img src="/b8.jpg" alt="" />
+          <div class="img">
+            <img src="/b7.jpg" alt="" />
+          </div>
+
+          <div class="img">
+            <img src="/b8.jpg" alt="" />
+          </div>
         </section>
 
         <section className="section">
@@ -266,11 +289,41 @@ const MainPage = () => {
             <div className="section-title-text">TODAY 카테고리 베스트</div>
           </div>
           <div className="list-button-best">
-            <button className="list-button">전체</button>
-            <button className="list-button">트랜드</button>
-            <button className="list-button">브랜드</button>
-            <button className="list-button">뷰티</button>
-            <button className="list-button">라이프</button>
+            <ListSelectButton
+              id="0"
+              onClick={changeBestButton}
+              value={bestIndex}
+            >
+              전체
+            </ListSelectButton>
+            <ListSelectButton
+              id="1"
+              onClick={changeBestButton}
+              value={bestIndex}
+            >
+              트랜드
+            </ListSelectButton>
+            <ListSelectButton
+              id="2"
+              onClick={changeBestButton}
+              value={bestIndex}
+            >
+              브랜드
+            </ListSelectButton>
+            <ListSelectButton
+              id="3"
+              onClick={changeBestButton}
+              value={bestIndex}
+            >
+              뷰티
+            </ListSelectButton>
+            <ListSelectButton
+              id="4"
+              onClick={changeBestButton}
+              value={bestIndex}
+            >
+              라이프
+            </ListSelectButton>
           </div>
           <div className="products-wrap">{productsData.map(renderCard)}</div>
           <button className="see-more">
@@ -283,10 +336,18 @@ const MainPage = () => {
             <div className="section-title-text">신상 모아보기</div>
           </div>
           <div className="list-button-best">
-            <button className="list-button">전체</button>
-            <button className="list-button">브랜드</button>
-            <button className="list-button">뷰티</button>
-            <button className="list-button">라이프</button>
+            <ListSelectButton id="0" onClick={changeNewButton} value={newIndex}>
+              전체
+            </ListSelectButton>
+            <ListSelectButton id="1" onClick={changeNewButton} value={newIndex}>
+              브랜드
+            </ListSelectButton>
+            <ListSelectButton id="2" onClick={changeNewButton} value={newIndex}>
+              뷰티
+            </ListSelectButton>
+            <ListSelectButton id="3" onClick={changeNewButton} value={newIndex}>
+              라이프
+            </ListSelectButton>
           </div>
           <div className="products-wrap">{productsData.map(renderCard)}</div>
           <button className="see-more">
@@ -360,3 +421,19 @@ const MainPage = () => {
 };
 
 export default MainPage;
+
+const ListSelectButton = styled.button`
+  border: 1px solid #c1c7ce;
+  border-radius: 50px;
+  padding: 0.8rem 1.7rem;
+  color: #8b939d;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 1rem;
+
+  ${(props) =>
+    props.value === Number(props.id) &&
+    ` background-color: #ff365d;
+      color: white;
+      border: 1px solid #ff365d;`}
+`;
